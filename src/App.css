@@ -1,22 +1,63 @@
-.App {
-  text-align: center;
+* {
+    padding: 0;
+    margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url("./assets/BGa.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-origin: border-box;
+    background-size: cover;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+/* .App {
+    min-height: 100vh;
+} */
+
+.title-app {
+    color: whitesmoke;
+    text-align: center;
+    padding: 20px 0;
+    font-family: cursive;
+    background-color: #1a1d3f;
 }
 
-.App-link {
-  color: #09d3ac;
+.search-form {
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 23%;
+}
+
+.search-bar {
+    width: 50%;
+    padding: 1%;
+    margin-left: 2%;
+    border-radius: 10px;
+}
+
+.search-button {
+    border: 2px black solid;
+    padding: 10px 20px;
+    color: beige;
+    background-color: rgb(253, 154, 5);
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.search-button .hover {
+    color: rgb(253, 154, 5);
+    background-color: beige;
+}
+
+.recipes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
