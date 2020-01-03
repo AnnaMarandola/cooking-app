@@ -1,3 +1,9 @@
+https://stupefied-northcutt-182441.netlify.com/
+
+projet perso pour mise en pratique des hooks et consommation d'API 
+
+######################################################################################################
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
