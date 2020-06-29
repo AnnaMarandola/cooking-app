@@ -6,7 +6,7 @@
 body {
     width: 100%;
     height: 100%;
-    background-image: url("./assets/BGa.jpg");
+    /* background-image: url("./assets/BGa.jpg"); */
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-origin: border-box;
