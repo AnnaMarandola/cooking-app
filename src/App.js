@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Recipe from './Recipe';
-// import './App.css';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField } from '@material-ui/core';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 const useStyles = makeStyles((theme) => ({
+  app: {
+  },
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -29,7 +31,13 @@ const useStyles = makeStyles((theme) => ({
 },  
   instructions: {
     fontWeight: 300,
-    color: '#2a3eb1',
+    backgroundColor: '#757de8',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: '1.1rem',
+    padding: '1rem',
+    borderRadius: '10px',
+    marginTop: '2rem',
   },
   searchForm: {
     display: 'flex',
@@ -41,9 +49,32 @@ const useStyles = makeStyles((theme) => ({
     width: '80%',
     marginLeft: '10%',
   },
-  recipes: {
-    display: 'flex',
-    flexDirection: 'row',
+  button: {
+    backgroundImage: '../src/assets/peanut.png'
+  },
+  titleSearch: {
+    fontSize: '1.3rem',
+    fontFamily:'Segoe UI',
+  },
+  welcomeImage: {
+    marginTop: '2.5rem',
+    marginBottom: '1.5rem',
+    marginLeft: '10%',
+    width: '80%',
+    opacity: 0.5,
+  },
+  titleApp: {
+    fontSize: '3rem',
+    color: '#3F51B5',
+  },
+  text: {
+    textAlign: 'center',
+    marginBottom: '4rem',
+  },
+  goBack: {
+    position: 'absolute',
+    top: '4%',
+    marginLeft: '-40%'
   }
 }));
 
@@ -60,13 +91,26 @@ const [recipes, setRecipes] = useState([]);
 const [search, setSearch] = useState('');
 const [query, setQuery] = useState('');
 const [healthFilter, setHealthFilter] = useState('');
+const [onboarded, setOnboard] = useState(false);
 
 useEffect(() => {
   getRecipes();
     }, [query]);
+
+    const getOnboard = event => {
+      setOnboard(true)
+    }
+
+    const goBackHome = event => {
+      setOnboard(false)
+    }
     
     const handleHealthFilters = event => {
      setHealthFilter(event.currentTarget.value)
+    }
+
+    const goBackToFIlter = event => {
+      setHealthFilter('')
     }
 
   const getRecipes = async () => {
@@ -91,10 +135,21 @@ useEffect(() => {
   console.log('healthFilter', healthFilter)
 
   return (
-    <div className="App">
-      { !healthFilter.length && 
+    <div className={classes.app}>
+    <div className={classes.app}>
+      { !onboarded && 
       <div className={classes.root}>
-      <h3 className={classes.instructions}>Renseignez votre allergie / intolerance:</h3>
+      <p className={classes.titleApp}>Allergeek</p>
+      <div className={classes.welcome}>
+        <img src={ require("./assets/allergens.jpg") } alt="allergens logos" className={classes.welcomeImage}/>
+      </div>
+      <p className={classes.text}>Des milliers d'idées recettes adaptées aux allergies et intolérances alimentaires.</p>
+      <Button onClick={getOnboard} variant="contained" color="primary">Découvrez</Button>
+      </div>}
+      { onboarded && !healthFilter.length && 
+      <div className={classes.root}>
+      <ArrowBackIosIcon onClick={goBackHome} className={classes.goBack} color="primary"/>
+      <h3 className={classes.instructions}>Selectionnez votre allergène ou votre régime alimentaire.</h3>
       <div className={classes.allergensSection}>
       <ButtonGroup
       orientation="vertical"
@@ -102,7 +157,7 @@ useEffect(() => {
       aria-label="vertical contained primary button group"
       variant="text"
       >
-      <Button onClick={ handleHealthFilters} value="peanut-free">Peanuts</Button>
+      <Button className={classes.button} onClick={ handleHealthFilters} value="peanut-free">Peanuts</Button>
       <Button onClick={ handleHealthFilters} value="crustacean-free">Crustaceans</Button>
       <Button onClick={ handleHealthFilters} value="dairy-free">Lactose</Button>
       <Button onClick={ handleHealthFilters} value="egg-free">Eggs</Button>
@@ -117,7 +172,8 @@ useEffect(() => {
       </div>}
      { healthFilter && healthFilter.length  && 
      <div className={classes.root}>
-     <h3 className={classes.instructions}>{healthFilter} recipes:</h3>
+     <ArrowBackIosIcon className={classes.goBack} onClick={goBackToFIlter} color="primary"/>
+     <h3 className={classes.titleSearch}>{healthFilter} recipes:</h3>
      <form onSubmit={getSearch} className={classes.searchForm} noValidate>
         <TextField id="outlined-basic" label="enter an ingredient" variant="outlined" color="primary"  type="text" value={search} onChange={updateSearch} />
         <Button className={classes.searchButton} variant="contained" color="primary" type="submit">
@@ -126,7 +182,8 @@ useEffect(() => {
       </form>
       </div>
      }
-      <div className="recipes">
+     <div className={classes.container}>
+      <div className={classes.recipes}>
       {recipes && recipes.map(recipe => (
         <Recipe 
         key={recipe.recipe.label}
@@ -140,6 +197,8 @@ useEffect(() => {
         url={recipe.recipe.url}
         />
       ))}
+    </div>
+    </div>
     </div>
     </div>
   );
