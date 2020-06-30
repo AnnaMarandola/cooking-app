@@ -110,7 +110,8 @@ useEffect(() => {
     }
 
     const goBackToFIlter = event => {
-      setHealthFilter('')
+      setHealthFilter('');
+      setRecipes([])
     }
 
   const getRecipes = async () => {
