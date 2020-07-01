@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 },  
   instructions: {
     fontWeight: 300,
-    backgroundColor: '#757de8',
+    backgroundColor: '#3f51b5',
     color: '#fff',
     textAlign: 'center',
     fontSize: '1.1rem',
@@ -49,12 +49,12 @@ const useStyles = makeStyles((theme) => ({
     width: '80%',
     marginLeft: '10%',
   },
-  button: {
-    backgroundImage: '../src/assets/peanut.png'
-  },
   titleSearch: {
-    fontSize: '1.3rem',
-    fontFamily:'Segoe UI',
+    fontSize: '1.8rem',
+    fontFamily: 'Segoe UI',
+    color: '#2a3eb1',
+    textAlign: 'center',
+
   },
   welcomeImage: {
     marginTop: '2.5rem',
@@ -70,6 +70,8 @@ const useStyles = makeStyles((theme) => ({
   text: {
     textAlign: 'center',
     marginBottom: '4rem',
+    fontFamily: 'Caveat Brush, cursive',
+
   },
   goBack: {
     position: 'absolute',
@@ -113,7 +115,6 @@ useEffect(() => {
       setHealthFilter('')
       setRecipes([])
       setSearch('')
-      // setQuery('')
     }
 
   const getRecipes = async () => {
@@ -131,6 +132,33 @@ useEffect(() => {
   const getSearch = event => {
     event.preventDefault();
     setQuery(search);
+  }
+
+  const translateAllergen = (healthFilter) => {
+    switch (healthFilter){
+      case 'peanut-free':
+        return 'sans arachides' 
+      case 'crustacean-free':
+        return 'sans crustaçés'
+      case 'dairy-free':
+        return 'sans lactose'
+      case 'egg-free':
+        return 'sans oeufs'
+      case 'fish-free':
+        return 'sans poisson'
+      case 'soy-free':
+        return 'sans soja'
+      case 'gluten-free':
+        return 'sans gluten'
+      case 'alcohol-free':
+        return 'sans alcool'
+      case 'vegan':
+        return 'vegan'
+      case 'vegetarian':
+        return 'végétariennes'
+      default:
+      return 'schtroumpf'
+    }
   }
 
 
@@ -160,27 +188,27 @@ useEffect(() => {
       aria-label="vertical contained primary button group"
       variant="text"
       >
-      <Button className={classes.button} onClick={ handleHealthFilters} value="peanut-free">Peanuts</Button>
-      <Button onClick={ handleHealthFilters} value="crustacean-free">Crustaceans</Button>
+      <Button className={classes.button} onClick={ handleHealthFilters} value="peanut-free">Arachides</Button>
+      <Button onClick={ handleHealthFilters} value="crustacean-free">Crustacés</Button>
       <Button onClick={ handleHealthFilters} value="dairy-free">Lactose</Button>
-      <Button onClick={ handleHealthFilters} value="egg-free">Eggs</Button>
-      <Button onClick={ handleHealthFilters} value="fish-free">Fish</Button>
-      <Button onClick={ handleHealthFilters} value="soy-free">Soy</Button>
+      <Button onClick={ handleHealthFilters} value="egg-free">Oeuf</Button>
+      <Button onClick={ handleHealthFilters} value="fish-free">Poisson</Button>
+      <Button onClick={ handleHealthFilters} value="soy-free">Soja</Button>
       <Button onClick={ handleHealthFilters} value="gluten-free">Gluten</Button>
-      <Button onClick={ handleHealthFilters} value="alcohol-free">Alcohol</Button>
+      <Button onClick={ handleHealthFilters} value="alcohol-free">Alcool</Button>
       <Button onClick={ handleHealthFilters} value="vegan">Vegan</Button>
-      <Button onClick={ handleHealthFilters} value="vegetarian">Vegetarian</Button>
+      <Button onClick={ handleHealthFilters} value="vegetarian">Végétarien</Button>
       </ButtonGroup>
       </div>
       </div>}
      { healthFilter && healthFilter.length  && 
      <div className={classes.root}>
      <ArrowBackIosIcon className={classes.goBack} onClick={goBackToFIlter} color="primary"/>
-     <h3 className={classes.titleSearch}>{healthFilter} recipes:</h3>
+     <p className={classes.titleSearch}>Recettes<br/> {translateAllergen(healthFilter)} :</p>
      <form onSubmit={getSearch} className={classes.searchForm} noValidate>
-        <TextField id="outlined-basic" label="enter an ingredient" variant="outlined" color="primary"  type="text" value={search} onChange={updateSearch} />
+        <TextField id="outlined-basic" label="recherche par mot-clé" variant="outlined" color="primary"  type="text" value={search} onChange={updateSearch} />
         <Button className={classes.searchButton} variant="contained" color="primary" type="submit">
-          Search
+          Chercher
         </Button>
       </form>
       </div>
