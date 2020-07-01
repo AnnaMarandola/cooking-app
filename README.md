@@ -1,4 +1,4 @@
-https://stupefied-northcutt-182441.netlify.com/
+https://allergeek-alpha.netlify.app/
 
 projet perso pour mise en pratique des hooks et consommation d'API 
 
