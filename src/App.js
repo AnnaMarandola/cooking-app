@@ -87,15 +87,15 @@ const App = () => {
 const APP_ID = "a6a78483";
 const APP_KEY = "985e5bd05d53928bc9882c6af27cac8f";
 
-const [recipes, setRecipes] = useState([]);
-const [search, setSearch] = useState('');
-const [query, setQuery] = useState('');
-const [healthFilter, setHealthFilter] = useState('');
-const [onboarded, setOnboard] = useState(false);
+const [recipes, setRecipes] = useState([])
+const [search, setSearch] = useState('')
+const [query, setQuery] = useState('')
+const [healthFilter, setHealthFilter] = useState('')
+const [onboarded, setOnboard] = useState(false)
 
 useEffect(() => {
-  getRecipes();
-    }, [query]);
+  getRecipes()
+    }, [query])
 
     const getOnboard = event => {
       setOnboard(true)
@@ -110,8 +110,10 @@ useEffect(() => {
     }
 
     const goBackToFIlter = event => {
-      setHealthFilter('');
+      setHealthFilter('')
       setRecipes([])
+      setSearch('')
+      // setQuery('')
     }
 
   const getRecipes = async () => {

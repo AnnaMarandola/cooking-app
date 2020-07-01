@@ -12,18 +12,17 @@ import {blueGrey} from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {Button, Link} from '@material-ui/core';
 
-const useStyles = makeStyles ((theme: Theme) =>
+const useStyles = makeStyles ((theme) =>
   createStyles ({
     container: {
-      // display: 'flex',
       // flexDirection: 'column',
       // width: '70%',
       // flexWrap: 'wrap'
     },
     root: {
       maxWidth: 345,
-      // border: '1px solid #002984',
       marginBottom: '1.5rem',
+      marginLeft: '0.5rem',
     },
     header: {
       display: 'flex',
