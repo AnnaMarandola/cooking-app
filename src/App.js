@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '1rem',
     borderRadius: '10px',
     marginTop: '2rem',
+    marginBottom: '2rem',
   },
   searchForm: {
     display: 'flex',
@@ -66,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
   titleApp: {
     fontSize: '3rem',
     color: '#3F51B5',
+    
   },
   text: {
     textAlign: 'center',

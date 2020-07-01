@@ -40,7 +40,7 @@ const useStyles = makeStyles ((theme) =>
       paddingTop: '56.25%', // 16:9,
     },
     ingredients: {
-      marginLeft: '60%',
+      marginLeft: '58%',
       fontSize: '0.8rem',
       fontWeight: '600',
     },
