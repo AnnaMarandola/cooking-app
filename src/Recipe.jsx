@@ -22,7 +22,7 @@ const useStyles = makeStyles ((theme) =>
     root: {
       maxWidth: 345,
       marginBottom: '1.5rem',
-      marginLeft: '0.5rem',
+      marginLeft: '2rem',
     },
     header: {
       display: 'flex',

@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
   welcomeImage: {
     marginTop: '2.5rem',
-    marginBottom: '1.5rem',
+    marginBottom: '2.5rem',
     marginLeft: '10%',
     width: '80%',
     opacity: 0.5,
@@ -70,7 +70,10 @@ const useStyles = makeStyles((theme) => ({
   text: {
     textAlign: 'center',
     marginBottom: '4rem',
-    fontFamily: 'Caveat Brush, cursive',
+    fontFamily: 'Segoe UI',
+    fontSize: '1.2rem',
+    color: '#3F51B5',
+
 
   },
   goBack: {
@@ -174,7 +177,7 @@ useEffect(() => {
       <div className={classes.welcome}>
         <img src={ require("./assets/allergens.jpg") } alt="allergens logos" className={classes.welcomeImage}/>
       </div>
-      <p className={classes.text}>Des milliers d'idées recettes adaptées aux allergies et intolérances alimentaires.</p>
+      <p className={classes.text}>Des milliers d'idées recettes adaptées aux allergies et intolérances alimentaires !</p>
       <Button onClick={getOnboard} variant="contained" color="primary">Découvrez</Button>
       </div>}
       { onboarded && !healthFilter.length && 
