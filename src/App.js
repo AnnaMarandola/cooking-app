@@ -5,6 +5,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField } from '@material-ui/core';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import LandingPage from './LandingPage';
 
 const useStyles = makeStyles((theme) => ({
   app: {
@@ -55,27 +56,6 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Segoe UI',
     color: '#2a3eb1',
     textAlign: 'center',
-
-  },
-  welcomeImage: {
-    marginTop: '2.5rem',
-    marginBottom: '2.5rem',
-    marginLeft: '10%',
-    width: '80%',
-    opacity: 0.5,
-  },
-  titleApp: {
-    fontSize: '3rem',
-    color: '#3F51B5',
-    
-  },
-  text: {
-    textAlign: 'center',
-    marginBottom: '4rem',
-    fontFamily: 'Segoe UI',
-    fontSize: '1.2rem',
-    color: '#3F51B5',
-
 
   },
   goBack: {
@@ -174,14 +154,8 @@ useEffect(() => {
     <div className={classes.app}>
     <div className={classes.app}>
       { !onboarded && 
-      <div className={classes.root}>
-      <p className={classes.titleApp}>Allergeek</p>
-      <div className={classes.welcome}>
-        <img src={ require("./assets/allergens.jpg") } alt="allergens logos" className={classes.welcomeImage}/>
-      </div>
-      <p className={classes.text}>Des milliers d'idées recettes adaptées aux allergies et intolérances alimentaires !</p>
-      <Button onClick={getOnboard} variant="contained" color="primary">Découvrez</Button>
-      </div>}
+      <LandingPage getOnboard={getOnboard}/>
+      }
       { onboarded && !healthFilter.length && 
       <div className={classes.root}>
       <ArrowBackIosIcon onClick={goBackHome} className={classes.goBack} color="primary"/>

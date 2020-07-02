@@ -15,9 +15,6 @@ import {Button, Link} from '@material-ui/core';
 const useStyles = makeStyles ((theme) =>
   createStyles ({
     container: {
-      // flexDirection: 'column',
-      // width: '70%',
-      // flexWrap: 'wrap'
     },
     root: {
       maxWidth: 345,
@@ -95,11 +92,6 @@ const Recipe = ({
   return (
     <div className={classes.container}>
       <Card className={classes.root}>
-        {/* <div className={classes.header}>
-              <Avatar aria-label="recipe" className={classes.avatar}>
-                {allergen}
-              </Avatar>
-        </div> */}
         <CardMedia className={classes.media} image={image} title={title} />
         <Link
           href={url}
@@ -120,15 +112,6 @@ const Recipe = ({
         <Typography className={classes.sources}>
           <b>Source :</b> {source}{' '}
         </Typography>
-          {/* <Typography variant="body2" color="textSecondary" component="p">
-              {(calories/5).toFixed(3)} calories/pers.
-            </Typography> */}
-
-          {/* <ul>
-                {healthLabels.map(healthLabel => (
-                <li className="">{healthLabel}</li>
-                ))}
-             </ul>   */}
         <CardActions disableSpacing>
           <Typography className={classes.ingredients}>Ingredients : </Typography>
           <IconButton
